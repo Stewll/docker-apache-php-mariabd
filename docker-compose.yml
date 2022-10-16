@@ -22,6 +22,8 @@ services:
   php-fpm:
     image: $PHP_VERSION
     restart: always
+    links:
+      - apache
     networks:
       - apache-php-mariadb
     ports:
@@ -29,7 +31,7 @@ services:
     volumes:
       - $PHP_CONFIG:/etc/php
 
-  db:
+  mariadb:
     image: $MARIADB_VERSION
     restart: always
     networks:
