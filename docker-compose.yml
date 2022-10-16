@@ -49,6 +49,11 @@ services:
       MYSQL_PASSWORD: $MYSQL_USER_PASSWORD
       MYSQL_DATABASE: $MYSQL_DATABASE_NAME
 
+  redis:
+    hostname: redis
+    image: "redis:alpine"
+    networks:
+      - apache-php-mariadb
 
 networks:
   apache-php-mariadb:
