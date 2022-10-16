@@ -3,7 +3,7 @@ services:
   apache:
     image: $HTTPD_VERVION
     restart: always
-    network:
+    networks:
       - apache-php-mariadb
     ports:
       - $HOST_HTTP_PORT:80
@@ -14,15 +14,15 @@ services:
     volumes:
       - $WWW_CONTENT:/usr/local/apache2/htdocs/
       - $APACHE_CONFIG:/usr/local/apache2/conf/
-      - $APACHE_PRIVATE_KEY:/usr/local/apache2/conf/
-      - $APACHE_PUBLIC_KEY:/usr/local/apache2/conf/
+#      - $APACHE_PRIVATE_KEY:/usr/local/apache2/conf/
+#      - $APACHE_PUBLIC_KEY:/usr/local/apache2/conf/
     environment:
       - ALLOW_OVERRIDE=true
 
   php-fpm:
     image: $PHP_VERSION
     restart: always
-    network:
+    networks:
       - apache-php-mariadb
     ports:
       - $PHP_PORT:9000
@@ -32,7 +32,7 @@ services:
   db:
     image: $MARIADB_VERSION
     restart: always
-    network:
+    networks:
       - apache-php-mariadb
     ports:
       - $MYSQL_HOST_PORT:3306
