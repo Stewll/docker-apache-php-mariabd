@@ -1,0 +1,13 @@
+mysql_data
+mysql_data/aria_log.00000001
+mysql_data/performance_schema
+mysql_data/multi-master.info
+mysql_data/ib_logfile0
+mysql_data/wordpress
+mysql_data/mysql_upgrade_info
+mysql_data/ib_buffer_pool
+mysql_data/aria_log_control
+mysql_data/mysql
+mysql_data/.me
+mysql_data/ibdata1
+
