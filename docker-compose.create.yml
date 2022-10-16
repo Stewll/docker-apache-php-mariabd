@@ -1,0 +1,41 @@
+version: '3'
+services:
+  apache-php:
+    build: ./apache_php7-4-fpm
+    restart: always
+    networks:
+      - apache-php-mariadb
+    ports:
+      - $HOST_HTTP_PORT:80
+      - $HOST_HTTPS_PORT:443
+      - $PHP_PORT:9000
+    volumes:
+      - $APACHE_WWW_CONTENT:/usr/local/apache2/htdocs/
+      - $APACHE_CONFIG:/usr/local/apache2/conf/
+#      - $PHP_CONFIG:/opt/bitnami/php/etc/
+#      - $APACHE_PRIVATE_KEY:/usr/local/apache2/conf/
+#      - $APACHE_PUBLIC_KEY:/usr/local/apache2/conf/
+    environment:
+      - ALLOW_OVERRIDE=true
+
+
+  mariadb:
+    image: $MARIADB_VERSION
+    restart: always
+    networks:
+      - apache-php-mariadb
+    ports:
+      - $MYSQL_HOST_PORT:3306
+    volumes:
+      - $MYSQL_CONFIG:/etc/mysql
+      - $MYSQL_DATA:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: $MYSQL_ROOT_PASSWORD
+      MYSQL_USER: $MYSQL_USER-NAME
+      MYSQL_PASSWORD: $MYSQL_USER_PASSWORD
+      MYSQL_DATABASE: $MYSQL_DATABASE_NAME
+
+
+networks:
+  apache-php-mariadb:
+    driver: bridge
