@@ -8,9 +8,9 @@ services:
     ports:
       - $HOST_HTTP_PORT:80
       - $HOST_HTTPS_PORT:443
-    links:
-      - mariadb
-      - php-fpm
+#    links:
+#      - mariadb
+#      - php-fpm
     volumes:
       - $WWW_CONTENT:/usr/local/apache2/htdocs/
       - $APACHE_CONFIG:/usr/local/apache2/conf/
@@ -22,8 +22,8 @@ services:
   php-fpm:
     image: $PHP_VERSION
     restart: always
-    links:
-      - apache
+ #   links:
+ #     - apache
     networks:
       - apache-php-mariadb
     ports:
