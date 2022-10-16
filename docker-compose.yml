@@ -29,7 +29,7 @@ services:
     ports:
       - $PHP_PORT:9000
     volumes:
-      - $PHP_CONFIG:/etc/php
+      - $PHP_CONFIG:/opt/bitnami/php/etc/
 
   mariadb:
     image: $MARIADB_VERSION
