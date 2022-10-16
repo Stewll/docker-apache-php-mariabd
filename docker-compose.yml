@@ -1,7 +1,7 @@
 version: '3'
 services:
   apache-php:
-    image: wordpress:6.0.2-php7.4-apache 
+    image: $WORDPRESS 
     restart: always
     networks:
       - apache-php-mariadb
@@ -11,7 +11,7 @@ services:
 #      - $PHP_PORT:9000
     volumes:
       - $APACHE_WWW_CONTENT:/var/www/html
-      - $APACHE_CONFIG:/etc/apache2/conf/
+#      - $APACHE_CONFIG:/etc/apache2/conf/
       - $PHP_CONFIG:/usr/local/etc/php 
 #      - $APACHE_PRIVATE_KEY:/usr/local/apache2/conf/
 #      - $APACHE_PUBLIC_KEY:/usr/local/apache2/conf/
