@@ -21,7 +21,7 @@ services:
 #      - "$APACHE_PUBLIC_KEY:/usr/local/apache2/conf/serverPub.key"
       - "$SSH:/root/.ssh"
     environment:
-      WORDPRESS_DB_HOST: "$MYSQL_HOSTNAME"
+      WORDPRESS_DB_HOST: "$MYSQL_HOSTNAME":3306
       WORDPRESS_DB_USER: "$MYSQL_USER_NAME"
       WORDPRESS_DB_PASSWORD: "$MYSQL_USER_PASSWORD"
       WORDPRESS_DB_NAME: "$MYSQL_DATABASE_NAME"
